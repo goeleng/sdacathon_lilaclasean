@@ -8,10 +8,13 @@ def crop_image(img,tol=0):
     mask = img>tol
     return img[np.ix_(mask.any(1),mask.any(0))]
 
-link_jpg = "images\image_original.JPG"
-path = "images\rendered"
-outputfolder ="images\matched"
-result = "images\result"
+
+fileDir = os.path.dirname(os.path.abspath(__file__))
+
+link_jpg = fileDir + "/images/image_original.JPG"
+path = fileDir + "/images/rendered"
+outputfolder = fileDir + "/images/matched"
+result = fileDir + "/images/result"
 
 bestscore = 0
 
@@ -49,4 +52,4 @@ for link in os.listdir(path):
 
 if not os.path.exists(result):
     os.makedirs(result)
-    cv2.imwrite(os.path.join(result,bestlink), bestmatch)
+cv2.imwrite(os.path.join(result,bestlink), bestmatch)
