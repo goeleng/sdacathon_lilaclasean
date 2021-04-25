@@ -1,0 +1,2 @@
+opencv-python
+pyexiv2
